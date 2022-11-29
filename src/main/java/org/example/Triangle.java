@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.HashSet;
+
 public class Triangle {
     private final int sideA;
     private final int sideB;
@@ -9,6 +11,7 @@ public class Triangle {
         this.sideA = sideA;
         this.sideB = sideB;
         this.sideC = sideC;
+        if (!figureExistence()) throw new NullPointerException("Figure can't be created");
     }
 
     public int getPerimeter() {
@@ -18,5 +21,9 @@ public class Triangle {
     public double getSquare() {
         double p = getPerimeter() / 2.0;
         return Math.sqrt(p * (p - sideA) * (p - sideB) * (p - sideC));
+    }
+
+    private boolean figureExistence() {
+        return sideA + sideB > sideC && sideA + sideC > sideB && sideC + sideB > sideA;
     }
 }
